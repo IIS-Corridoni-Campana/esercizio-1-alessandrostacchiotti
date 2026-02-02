@@ -7,10 +7,12 @@
     </head>
     <body>
         <header class="controls">
-            <button id="dayBtn" aria-pressed="true">Giorno</button>
-            <button id="nightBtn" aria-pressed="false">Notte</button>
+            <button onclick="document.getElementById('Immg').src='Giorno.png'">Giorno</button>
+            <button onclick="document.getElementById('Immg').src='Notte.png'">Notte</button>
         </header>
-            <img id="sceneImage" class="scene-photo" src="Giorno.png" alt="Scena giorno o notte">
+        <div id="scene" class="scene day">
+        <img id="Immg" src="Giorno.png" alt="Scena giorno o notte">    
+        </div>
         <script src="script.js"></script>
     </body>
 </html>
