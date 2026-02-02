@@ -1,7 +1,64 @@
-body {
-    cursor: pointer;
+body{
+    margin:0;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    color:var(--text-dark);
+    background:var(--day-bottom);
 }
 
-img {
-    cursor: pointer;
+.controls{
+    display:flex;
+    gap:10px;
+    padding:12px;
+    justify-content:center;
+    background:rgba(255,255,255,0.6);
+}
+
+.controls button{
+    padding:8px 14px;
+    border-radius:8px;
+    border:1px solid rgba(0,0,0,0.08);
+    background:#fff;
+    cursor:pointer;
+    font-weight:600;
+}
+.controls button[aria-pressed="true"]{box-shadow:0 2px 6px rgba(0,0,0,0.12)}
+
+.scene{
+    min-height:calc(100vh - 58px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    transition:background 600ms ease;
+}
+
+.scene .sky{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.scene-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:1;transition:opacity 600ms ease}
+.icon{width:180px;height:180px;transition:transform 600ms ease,opacity 400ms ease;z-index:1}
+.sun{opacity:1;transform:translateY(0)}
+.moon{opacity:0;transform:translateY(20px) scale(0.9)}
+
+.foreground{position:relative;text-align:center;padding:40px}
+.foreground{z-index:2}
+.foreground h1{margin:0;font-size:2.4rem}
+.foreground p{margin:8px 0 0;color:rgba(0,0,0,0.6)}
+
+.scene.day{background:linear-gradient(180deg,var(--day-top),var(--day-bottom));color:var(--text-dark)}
+.scene.day .sun{opacity:1;transform:translateY(0) scale(1)}
+.scene.day .moon{opacity:0;transform:translateY(20px) scale(0.9)}
+
+.scene.night{background:linear-gradient(180deg,var(--night-top),var(--night-bottom));color:#E6EEFF}
+.scene.night .sun{opacity:0;transform:translateY(-20px) scale(0.9)}
+.scene.night .moon{opacity:1;transform:translateY(0) scale(1)}
+
+/* Stars for night */
+.scene.night::before{
+    content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 10% 20%, rgba(255,255,255,0.9) 0.5px, transparent 0.6px),radial-gradient(circle at 70% 40%, rgba(255,255,255,0.8) 0.6px, transparent 0.8px),radial-gradient(circle at 40% 80%, rgba(255,255,255,0.7) 0.4px, transparent 0.6px);
+    background-size: 100% 100%;opacity:0.9;pointer-events:none;
+}
+
+@media (max-width:520px){
+    .icon{width:120px;height:120px}
+    .foreground h1{font-size:1.6rem}
 }
