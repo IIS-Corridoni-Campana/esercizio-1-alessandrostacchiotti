@@ -3,7 +3,7 @@
     padding:0;
 }
 
-.controls{
+header{
     display:flex;
     gap:15%;
     padding:20px;
@@ -11,7 +11,7 @@
     background:rgba(255,255,255);
 }
 
-.controls button{
+button{
     padding:12px 28px;
     border-radius:25px;
     background:#fff;
